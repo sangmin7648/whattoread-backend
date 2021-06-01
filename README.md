@@ -2,14 +2,8 @@
 Backend HTTP API application for Books recommendation service "What To Read?"
 
 - API
-| Endpoint               | HTTP Verb         | Description                                                  |
-| ---------------------- | ----------------- | ------------------------------------------------------------ |
-| /ping                  | GET               | returns "pong"                                               |
-| /search                | GET               | run NER model with <code>user_input</code>, output piped to Elasticsearch as filters. return list of books |
-| /book_detail/{book_id} | GET               | return book meta data from Elasticsearch by <code>book_id</code> |
-| /signup                | POST              | puts user in database <code>id</code>, <code>name</code>, <code>password</code>, <code>email</code> required. |
-| /login                 | POST              | returns jwt token                                            |
-| /bookshelf             | POST, DELETE, GET | PUT : save book_id to user shelf <br>DELETE : delete book_id from user shelf <br>GET : return book_id list for user |
+![image](https://user-images.githubusercontent.com/68796085/120313846-83544680-c315-11eb-9cd1-4dd774bc669e.png)
+
 
 - url for application : http://13.209.42.183:5000
 

@@ -8,11 +8,14 @@ class UserService:
 
     def create_new_user(self, new_user):
         id = new_user['id']
+        email = new_user['email']
         user = self.user_dao.get_user(id)
+        if not self.user_dao.is_email_unique(email):
+            return f"email {email} is already in use", 409
         if user is not None:
-            return "이미 사용자가 존재합니다", 409
+            return f"user {id} already exists", 409
         self.user_dao.insert_user(new_user)
-        return "사용자를 생성했습니다", 200
+        return f"successfully created user {id}", 200
 
     def login(self, credential):
         id = credential['id']

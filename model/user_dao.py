@@ -14,3 +14,7 @@ class UserDAO:
         user = self.model(id=id, name=name, password=password, email=email)
         self.db.session.add(user)
         self.db.session.commit()
+
+    def is_email_unique(self, email):
+        user = self.model.query.filter_by(email=email).first()
+        return False if user else True

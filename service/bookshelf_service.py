@@ -13,3 +13,4 @@ class BookshelfService:
 
     def delete_from_bookshelf(self, user_id, book_id):
         self.bookshelf_dao.delete_book(user_id, book_id)
+        return f"book_id {book_id} deleted from {user_id} bookshelf", 200

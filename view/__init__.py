@@ -22,6 +22,7 @@ def login_required(f):
 def create_endpoints(app, services):
     user_service = services.user_service
     bookshelf_service = services.bookshelf_service
+    elasticsearch_service = services.elasticsearch_service
 
     @app.route("/ping", methods=['GET'])
     def ping():
@@ -32,12 +33,13 @@ def create_endpoints(app, services):
         user_input = request.args.get('user_input')
         # query_string = model(user_input)
         # result = elasticsearch(query_string)
-        return user_input
+        result = elasticsearch_service.search(user_input)
+        return result
 
     @app.route("/book_detail/<int:book_id>", methods=['GET'])
     def book_detail(book_id):
-        # result = elasticsearch(book_id)
-        return # result
+        result = elasticsearch_service.get_book_by_id(book_id)
+        return result
 
     @app.route("/signup", methods=['POST'])
     def signup():
@@ -68,7 +70,7 @@ def create_endpoints(app, services):
             return result
         if request.method == 'DELETE':
             book_id = request.json['book_id']
-            bookshelf_service.delete_from_bookshelf(user_id, book_id)
-            return f"book_id {book_id} deleted from {user_id} bookshelf", 200
+            result = bookshelf_service.delete_from_bookshelf(user_id, book_id)
+            return result
         return jsonify(bookshelf_service.get_bookshelf(user_id))
 

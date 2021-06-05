@@ -5,7 +5,29 @@ Backend HTTP API application for Books recommendation service "What To Read?"
 ![image](https://user-images.githubusercontent.com/68796085/120313846-83544680-c315-11eb-9cd1-4dd774bc669e.png)
 
 
-- url for application : http://13.209.42.183:5000
+- /search example
+
+```
+// request
+/search?user_input=user input string
+
+// response
+{"_shards":{"failed":0,"skipped":0,"successful":1,"total":1},"hits":{"hits":[{"_id":"73","_index":"book","_score":6.8311615,"_source":{"author":"Beatrix Potter","avg_rating":4.1,"genre":["Childrens","Classics","Childrens","Picture Books","Fiction","Animals","Fantasy","Childrens","Juvenile","Kids","Young Adult","Childrens","Childrens Classics"],"publish_date":"1960","title":"Rabbit"},"_type":"_doc"},{"_id":"14","_index":"book","_score":5.2149377,"_source":{"author":"Cormac McCarthy","avg_rating":4.0,"genre":["Fiction","Historical","Historical Fiction","Westerns","Classics","Literature","Novels","Literature","American","Horror","Historical","Literary Fiction"],"publish_date":"1986","title":"Blood Meridian"},"_type":"_doc"},
+...
+...
+```
+
+- /book_detail example
+
+```
+// request
+/book_detail/1
+
+// response
+{"_shards":{"failed":0,"skipped":0,"successful":1,"total":1},"hits":{"hits":[{"_id":"1","_index":"book","_score":1.0,"_source":{"author":"Robert Penn Warren","avg_rating":4.2,"description":"More than just a classic political novel, Warren\u2019s tale of power and corruption in the Depression-era South is a sustained meditation on the unforeseen consequences of every human act, the vexing connectedness of all people and the possibility\u2014it\u2019s not much of one\u2014of goodness in a sinful world. Willie Stark, Warren\u2019s lightly disguised version of Huey Long, the one time Louisiana strongman/governor, begins as a genuine tribune of the people and ends as a murderous populist demagogue. Jack Burden is his press agent, who carries out the boss\u2019s orders, first without objection, then in the face of his own increasingly troubled conscience. And the politics? For Warren, that\u2019s simply the arena most likely to prove that man is a fallen creature. Which it does.","genre":["Fiction","Classics","Historical","Historical Fiction","Politics","Literature","Novels","Literature","American","Literary Fiction","American","Southern","Historical"],"publish_date":"1946","title":"All the King\u2019s Men"},"_type":"_doc"}],"max_score":1.0,"total":{"relation":"eq","value":1}},"timed_out":false,"took":19}
+
+```
+
 
 - /signup example
 

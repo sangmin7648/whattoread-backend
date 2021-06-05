@@ -19,7 +19,7 @@ def login_required(f):
     return decorated_function
 
 
-def create_endpoints(app, services):
+def create_endpoints(app, services, nlp_model):
     user_service = services.user_service
     bookshelf_service = services.bookshelf_service
     elasticsearch_service = services.elasticsearch_service
@@ -31,9 +31,8 @@ def create_endpoints(app, services):
     @app.route("/search", methods=['GET'])
     def search():
         user_input = request.args.get('user_input')
-        # query_string = model(user_input)
-        # result = elasticsearch(query_string)
-        result = elasticsearch_service.search(user_input)
+        processed_input_list = nlp_model(user_input)
+        result = elasticsearch_service.search(processed_input_list)
         return result
 
     @app.route("/book_detail/<int:book_id>", methods=['GET'])

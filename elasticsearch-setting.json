@@ -16,7 +16,8 @@
         }
       },
       "analyzer": {
-        "folding_english": {
+        "default": {
+            "type": "custom",
             "tokenizer":"standard",
             "stop": "_english_",
             "stemmer": "possessive_english",
@@ -35,31 +36,20 @@
   "mappings" : {
     "properties" : {
       "book_id" : {"type" : "long"},
-      "title" : {
-        "type" : "text",
-        "analyzer": "folding_english"
-      },
-      "author" : {
-        "type": "text",
-        "analyzer": "folding_english"
-      },
-      "genre" : {
-        "type": "text",
-        "analyzer": "folding_english"
-      },
-      "description" : {
-        "type": "text",
-        "analyzer": "folding_english"
-      },
+      "title" : {"type" : "text"},
+      "author" : {"type": "text"},
+      "genre" : {"type": "text"},
+      "publish_date": {
+        "type": "date",
+        "format": "yyyy"
+      }, 
+      "description" : {"type": "text"},
       "avg_rating" : {"type" : "float"},
       "reviews" : {
         "type" : "nested",
         "properties": {
           "rating" : {"type" : "integer"},
-          "review" : {
-            "type" : "text",
-            "analyzer": "folding_english"
-          }
+          "review" : {"type" : "text"}
         }
       }
     }

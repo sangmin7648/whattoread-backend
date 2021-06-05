@@ -1,7 +1,15 @@
 # whattoread-backend
-Backend HTTP API application for Books recommendation service "What To Read?"
+> Backend HTTP API application for Books recommendation service "What To Read?"
 
-- API
+## 📅 Project Schedule
+- 2021/05/13 ~ 2021/06/08 
+
+## ⭐ Software Stack
+- Web Application Frameworkd : Flask(Layered architecture)
+- Database : Elasticsearch
+- Web Scraping : Selenium, Beautifulsoup
+
+## API
 ![image](https://user-images.githubusercontent.com/68796085/120313846-83544680-c315-11eb-9cd1-4dd774bc669e.png)
 
 

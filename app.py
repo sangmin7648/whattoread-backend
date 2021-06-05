@@ -5,6 +5,7 @@ from flask_cors import CORS
 from model import *
 from service import UserService, BookshelfService, ElasticsearchService
 from view import create_endpoints
+from nlp import nlp_model
 
 import config
 
@@ -35,6 +36,6 @@ def create_app():
     services.elasticsearch_service = ElasticsearchService(elasticsearch_dao)
 
     # Presentation Layer
-    create_endpoints(app, services)
+    create_endpoints(app, services, nlp_model)
 
     return app

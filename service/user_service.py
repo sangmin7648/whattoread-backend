@@ -10,10 +10,10 @@ class UserService:
         id = new_user['id']
         email = new_user['email']
         user = self.user_dao.get_user(id)
-        if not self.user_dao.is_email_unique(email):
-            return f"email {email} is already in use", 409
         if user is not None:
             return f"user {id} already exists", 409
+        if not self.user_dao.is_email_unique(email):
+            return f"email {email} is already in use", 409
         self.user_dao.insert_user(new_user)
         return f"successfully created user {id}", 200
 

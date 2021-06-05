@@ -1,6 +1,9 @@
 # whattoread-backend
 > Backend HTTP API application for Books recommendation service "What To Read?"
 
+- whattoread-frontend : https://github.com/JiWM/BookSearch
+
+
 ## 📅 Project Schedule
 - 2021/05/13 ~ 2021/06/08 
 

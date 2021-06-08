@@ -7,5 +7,7 @@ class ElasticsearchService:
             return self.elasticsearch_dao.get_book(book_id)
         return f"book_id {book_id} does not exist", 404
 
-    def search(self, processed_input_list):
-        return self.elasticsearch_dao.search(processed_input_list)
+    def search(self, processed_input, keywords):
+        if keywords:
+            return self.elasticsearch_dao.search_again(processed_input, keywords)
+        return self.elasticsearch_dao.search(processed_input)

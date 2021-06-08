@@ -17,11 +17,14 @@ class Services:
 def create_app():
     app = Flask(__name__)
     app.config.from_object(config)
+
     CORS(app)
 
+    # SQLite ORM
     db.init_app(app)
     migrate.init_app(app, db, render_as_batch=True)
 
+    # Elasticsearch
     es = Elasticsearch('localhost:9200')
 
     # Persistence Layer

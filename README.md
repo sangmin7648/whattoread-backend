@@ -20,12 +20,17 @@
 
 ```
 // request
-/search?user_input=user input string
+GET /search?user_input={user input}
 
 // response
 {"_shards":{"failed":0,"skipped":0,"successful":1,"total":1},"hits":{"hits":[{"_id":"73","_index":"book","_score":6.8311615,"_source":{"author":"Beatrix Potter","avg_rating":4.1,"genre":["Childrens","Classics","Childrens","Picture Books","Fiction","Animals","Fantasy","Childrens","Juvenile","Kids","Young Adult","Childrens","Childrens Classics"],"publish_date":"1960","title":"Rabbit"},"_type":"_doc"},{"_id":"14","_index":"book","_score":5.2149377,"_source":{"author":"Cormac McCarthy","avg_rating":4.0,"genre":["Fiction","Historical","Historical Fiction","Westerns","Classics","Literature","Novels","Literature","American","Horror","Historical","Literary Fiction"],"publish_date":"1986","title":"Blood Meridian"},"_type":"_doc"},
 ...
-...
+
+// request with keyword
+GET /search?user_input={user input}&keyword={keywords}
+
+// response
+
 ```
 
 - /book_detail example

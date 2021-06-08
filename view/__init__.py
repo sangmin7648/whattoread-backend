@@ -31,8 +31,9 @@ def create_endpoints(app, services, nlp_model):
     @app.route("/search", methods=['GET'])
     def search():
         user_input = request.args.get('user_input')
-        processed_input_list = nlp_model(user_input)
-        result = elasticsearch_service.search(processed_input_list)
+        keywords = request.args.get('keyword')
+        processed_input = nlp_model(user_input)
+        result = elasticsearch_service.search(processed_input, keywords)
         return result
 
     @app.route("/book_detail/<int:book_id>", methods=['GET'])
@@ -51,7 +52,7 @@ def create_endpoints(app, services, nlp_model):
         credential = request.json
         authorized = user_service.login(credential)
         if not authorized:
-            return '', 401
+            return 'user id or password is incorrect', 401
         user_id = credential['id']
         token = user_service.generate_access_token(user_id)
         return jsonify({
@@ -65,7 +66,8 @@ def create_endpoints(app, services, nlp_model):
         user_id = g.user_id
         if request.method == 'POST':
             book_id = request.json['book_id']
-            result = bookshelf_service.put_to_bookshelf(user_id, book_id)
+            book_title = request.json['book_title']
+            result = bookshelf_service.put_to_bookshelf(user_id, book_id, book_title)
             return result
         if request.method == 'DELETE':
             book_id = request.json['book_id']

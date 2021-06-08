@@ -5,11 +5,11 @@ class BookshelfDAO:
 
     def get_bookshelf(self, user_id):
         book_list_obj = self.model.query.filter_by(user_id=user_id).all()
-        book_list = [row.book_id for row in book_list_obj]
+        book_list = [(row.book_id, row.book_title) for row in book_list_obj]
         return book_list
 
-    def insert_book(self, user_id, book_id):
-        bookshelf = self.model(user_id=user_id, book_id=book_id)
+    def insert_book(self, user_id, book_id, book_title):
+        bookshelf = self.model(user_id=user_id, book_id=book_id, book_title=book_title)
         self.db.session.add(bookshelf)
         self.db.session.commit()
 

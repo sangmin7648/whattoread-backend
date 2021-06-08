@@ -24,3 +24,5 @@ class User(db.Model):
 class BookShelf(db.Model):
     user_id = db.Column(db.String, db.ForeignKey('user.id', ondelete='CASCADE'), primary_key=True)
     book_id = db.Column(db.Integer, primary_key=True)
+    book_title = db.Column(db.String(100), nullable=False)
+

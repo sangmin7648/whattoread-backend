@@ -3,6 +3,9 @@
 
 - whattoread-frontend : https://github.com/JiWM/BookSearch
 
+## System Overview
+![image](https://user-images.githubusercontent.com/68796085/121776147-3baba580-cbc6-11eb-97a5-3cb8e683b137.png)
+
 
 ## 📅 Project Schedule
 - 2021/05/13 ~ 2021/06/08 
